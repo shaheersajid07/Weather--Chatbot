@@ -1,6 +1,6 @@
 
 // Define the API Gateway endpoint URL (Replace this with your actual API URL)
-const API_URL = "https://us-east-2.console.aws.amazon.com/apigateway/main/apis/xvias0g8i0/resources/?api=xvias0g8i0&experience=rest&region=us-east-2";
+const API_URL = "https://xvias0g8i0.execute-api.us-east-2.amazonaws.com/chatbot";
 
 function getWeather() {
     const userInput = (document.getElementById("userInput") as HTMLInputElement).value;
