@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Chatbot</title>
+    <style>
+        /* Basic styling for the chatbot page */
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        input, button { padding: 10px; margin: 10px; }
+        #response { margin-top: 20px; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <h2>Weather Chatbot</h2>
+    <p>Ask about the weather (e.g., "What's the weather in New York?")</p>
+
+    <!-- Text input where users enter their weather query -->
+    <input type="text" id="userInput" placeholder="Type your question..." />
+
+    <!-- Button to submit the query -->
+    <button onclick="getWeather()">Submit</button>
+
+    <!-- Section where the chatbot's response will be displayed -->
+    <p id="response"></p>
+
+    <!-- Load the JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
