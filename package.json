@@ -1,6 +1,33 @@
 {
   "dependencies": {
+    "@aws-sdk/client-comprehend": "^3.777.0",
+    "aws": "^0.0.3-2",
+    "aws-lambda": "^1.0.7",
     "axios": "^1.8.4",
+    "zip": "^1.2.0"
+  },
+  "name": "weather--chatbot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaheersajid07/Weather--Chatbot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shaheersajid07/Weather--Chatbot/issues"
+  },
+  "homepage": "https://github.com/shaheersajid07/Weather--Chatbot#readme",
+  "description": "",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.148",
+    "@types/node": "^22.13.17",
+    "aws-sdk": "^2.1692.0",
     "typescript": "^5.8.2"
   }
 }

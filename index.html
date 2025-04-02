@@ -4,27 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Chatbot</title>
-    <style>
-        /* Basic styling for the chatbot page */
-        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
-        input, button { padding: 10px; margin: 10px; }
-        #response { margin-top: 20px; font-size: 18px; }
-    </style>
 </head>
 <body>
     <h2>Weather Chatbot</h2>
-    <p>Ask about the weather (e.g., "What's the weather in New York?")</p>
-
-    <!-- Text input where users enter their weather query -->
-    <input type="text" id="userInput" placeholder="Type your question..." />
-
-    <!-- Button to submit the query -->
-    <button onclick="getWeather()">Submit</button>
-
-    <!-- Section where the chatbot's response will be displayed -->
+    <input type="text" id="userInput" placeholder="Ask about the weather...">
+    <button onclick="sendMessage()">Send</button>
     <p id="response"></p>
 
-    <!-- Load the JavaScript file -->
-    <script src="script.js"></script>
+    <script>
+        async function sendMessage() {
+            const userInput = document.getElementById("userInput").value;
+            const responseElement = document.getElementById("response");
+
+            if (!userInput.trim()) {
+                responseElement.innerText = "Please enter a message.";
+                return;
+            }
+
+            try {
+                const response = await fetch("https://sqb4t3gvmd.execute-api.us-east-1.amazonaws.com/prod/weather-chatbot", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ message: userInput }),
+                });
+
+                const data = await response.json();
+                console.log("Raw response from API:", data);
+                try { 
+                    const body = JSON.parse(data.body); responseElement.innerText = body.message ? `${body.message}, Temperature: ${body.temperature}, Condition: ${body.condition}` : "Error: Could not retrieve weather info."; 
+                } catch (e) { 
+                    console.error("Error parsing body:", e); responseElement.innerText = "Error: Could not parse weather data."; 
+                }
+
+            } catch (error) {
+                console.error("Error:", error);
+                responseElement.innerText = "Failed to connect to chatbot.";
+            }
+        }
+    </script>
 </body>
 </html>
